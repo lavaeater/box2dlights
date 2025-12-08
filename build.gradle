@@ -19,7 +19,7 @@ sourceSets {
 }
 
 ext {
-	gdxVersion = "1.9.11"
+	gdxVersion = "1.14.0"
 
 	isReleaseBuild = {
 		return project.hasProperty("RELEASE")
@@ -47,8 +47,8 @@ ext {
 version project.getProperty('version') + (isReleaseBuild() ? "" : "-SNAPSHOT")
 
 java {
-	sourceCompatibility = 1.7
-	targetCompatibility = 1.7
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
 
 	withJavadocJar()
 	withSourcesJar()
