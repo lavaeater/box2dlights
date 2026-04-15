@@ -5,3 +5,5 @@ libs/
 target/
 *.class
 *.jar
+build/
+.gradle/
