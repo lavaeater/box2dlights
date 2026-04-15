@@ -7,8 +7,12 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 public final class LightShader {
 	static final public ShaderProgram createLightShader() {
-		String gamma = ""; 
-		if (RayHandler.getGammaCorrection())
+		return createLightShader(RayHandler.getGammaCorrection());
+	}
+
+	static final public ShaderProgram createLightShader(boolean gammaCorrection) {
+		String gamma = "";
+		if (gammaCorrection)
 			gamma = "sqrt";
 		
 		final String vertexShader = 
