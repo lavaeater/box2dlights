@@ -91,6 +91,10 @@ public class P3dConeLight extends P3dPositionalLight {
 		dirty = true;
 	}
 
+	public float getDirection() {
+		return direction;
+	}
+
 	/**
 	 * @return this light's cone degree (half-angle)
 	 */

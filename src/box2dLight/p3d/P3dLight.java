@@ -171,6 +171,10 @@ public abstract class P3dLight extends BaseLight {
 		this.height = height;
 	}
 
+	public float getHeight() {
+		return this.height;
+	}
+
 	/** Global contact filter applied to all P3d lights **/
 	static private Filter globalFilterA = null;
 	/** Per-light contact filter **/
