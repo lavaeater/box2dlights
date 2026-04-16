@@ -103,7 +103,7 @@ public class DirectionalLight extends Light {
 	}
 	
 	@Override
-	void update() {
+	public void update() {
 		if (rayHandler.pseudo3d) {
 			float width = (rayHandler.x2 - rayHandler.x1);
 			float height = (rayHandler.y2 - rayHandler.y1);
@@ -195,7 +195,7 @@ public class DirectionalLight extends Light {
 	}
 
 	@Override
-	void render () {
+	public void render () {
 		rayHandler.lightRenderedLastFrame++;
 		rayHandler.simpleBlendFunc.apply();
 
@@ -419,7 +419,7 @@ public class DirectionalLight extends Light {
 	}
 
 	@Override
-	public boolean contains (float x, float y) {
+	public boolean contains(float x, float y) {
 		boolean oddNodes = false;
 		float x2 = mx[rayNum] = start[0].x;
 		float y2 = my[rayNum] = start[0].y;

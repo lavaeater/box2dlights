@@ -44,7 +44,7 @@ public class ConeLight extends PositionalLight {
 	}
 	
 	@Override
-	public void update () {
+	public void update() {
 		if (rayHandler.pseudo3d) {
 			prepareFixtureData();
 			updateDynamicShadowMeshes();
@@ -95,7 +95,7 @@ public class ConeLight extends PositionalLight {
 	 * <p>Actual recalculations will be done only on {@link #update()} call
 	 */
 	public void setDistance(float dist) {
-		dist *= RayHandler.gammaCorrectionParameter;
+		dist *= gammaCorrectionValue;
 		this.distance = dist < 0.01f ? 0.01f : dist;
 		dirty = true;
 	}

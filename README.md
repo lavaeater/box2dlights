@@ -1,31 +1,27 @@
-# Box2DLights
+# Box2DLights - Pseudo 3d [development]
 
 [![GitHub Actions Build Status](https://img.shields.io/github/actions/workflow/status/libgdx/box2dlights/main.yml?branch=master&label=GitHub%20Actions)](https://github.com/libgdx/box2dlights/actions?query=workflow%3A%22Build+and+deploy%22)
 
 [![Latest Version](https://img.shields.io/nexus/r/com.badlogicgames.box2dlights/box2dlights?nexusVersion=2&server=https%3A%2F%2Foss.sonatype.org&label=Version)](https://search.maven.org/artifact/com.badlogicgames.box2dlights/box2dlights)
 [![Snapshots](https://img.shields.io/nexus/s/com.badlogicgames.box2dlights/box2dlights?server=https%3A%2F%2Foss.sonatype.org&label=Snapshots)](https://oss.sonatype.org/#nexus-search;gav~com.badlogicgames.box2dlights~box2dlights~~~~kw,versionexpand)
 
-[![screenshot](http://img.youtube.com/vi/lfT8ajGbzk0/0.jpg)](http://www.youtube.com/watch?v=lfT8ajGbzk0)
+[![screenshot](http://img.youtube.com/vi/8Jc5Xyy4yJU/0.jpg)](http://youtu.be/8Jc5Xyy4yJU)
 
-Kalle Hameleinen's Box2DLights is a 2D lighting framework that uses [box2d](http://box2d.org/) for raycasting and OpenGL ES 2.0 for rendering. This library is intended to be used with [libgdx](http://libgdx.com).
+This is the pseudo-3d implementation based on Kalle Hameleinen's Box2DLights.
 
-Try Kalle's game [Boxtrix](https://market.android.com/details?id=boxtrix.android) to see the library in action.
+It provides simple dynamic limited length fixtures-shaped shadows for 2d games with the "from top" camera view, where you can control the third pseudo dimension - "height" for both physics fixtures and lights.
 
-## Features
+This is in a quite an early development stage, so not everything is supported, and not everything works without bugs.
 
- * Arbitrary number of lights
- * Gaussian blurred light maps
- * Point light
- * Cone Light
- * Directional Light
- * Chain Light [New in 1.3]
- * Shadows
- * Dynamic/static/xray light
- * Culling
- * Colored ambient light
- * Gamma corrected colors
- * Handler class to do all the work
- * Query method for testing is point inside of light/shadow
+## Currently supported lights and fixture shapes:
+ * Point Light
+ * Directional Light (in progress)
+
+## Fixture shapes:
+   * PolygonShape
+   * CircleShape
+   * ChainShape (in progress)
+   * EdgeShape (in progress)
 
 This library offer easy way to add soft dynamic 2d lights to your physic based game. Rendering use libgdx, but it would be easy to port this to other frameworks or pure openGl too.
 
@@ -48,4 +44,3 @@ If you use Gradle, add the following dependency to your build.gradle file, in th
 
 ## Maintenance Note
 Box2dlights was moved from Google Code to GitHub to make contributing easier. The libgdx team will happily merge pull requests but will not fix bugs or ensure compatibility with the latest libgdx version.
-
