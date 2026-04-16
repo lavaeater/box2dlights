@@ -75,4 +75,4 @@ dependencies {
 	testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
 }
 
-apply from: rootProject.file('publish.gradle')
+apply from: project.file('publish.gradle')
