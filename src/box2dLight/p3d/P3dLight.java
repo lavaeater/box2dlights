@@ -105,6 +105,10 @@ public abstract class P3dLight extends BaseLight {
 		return active;
 	}
 
+	public boolean getActive() {
+		return active;
+	}
+
 	/**
 	 * Enables/disables x-ray beams for this light
 	 * 
