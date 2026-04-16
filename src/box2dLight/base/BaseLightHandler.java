@@ -67,31 +67,31 @@ public abstract class BaseLightHandler implements Disposable {
 	public final Array<BaseLight> disabledLights = new Array<BaseLight>(false, 16);
 
 	protected final Matrix4 combined = new Matrix4();
-	protected final Color ambientLight = new Color();
+	public final Color ambientLight = new Color();
 	protected final Color tmpColor = new Color();
-	protected final ShaderProgram lightShader;
-	
+	public final ShaderProgram lightShader;
+
 	protected BaseLightMap lightMap;
-	
-	protected boolean culling = true;
-	protected boolean shadows = true;
-	
-	protected boolean blur = true;
+
+	public boolean culling = true;
+	public boolean shadows = true;
+
+	public boolean blur = true;
 	protected int lightBlurPasses = 1;
-	
-	protected boolean customViewport = false;
-	protected int viewportX = 0;
-	protected int viewportY = 0;
-	protected int viewportWidth = 0;
-	protected int viewportHeight = 0;
-	
+
+	public boolean customViewport = false;
+	public int viewportX = 0;
+	public int viewportY = 0;
+	public int viewportWidth = 0;
+	public int viewportHeight = 0;
+
 	/** How many lights passed culling and rendered to scene last time **/
 	public int lightsRenderedLastFrame = 0;
 
 	/** Cached camera matrix corners **/
 	public float x1, x2, y1, y2;
 
-	protected World world;
+	public World world;
 
 	/**
 	 * Enables/disables gamma correction.
@@ -115,7 +115,7 @@ public abstract class BaseLightHandler implements Disposable {
 	 * Class constructor specifying the physics world from where collision
 	 * geometry is taken, and size of FBO used for intermediate rendering.
 	 * 
-	 * @see #RayHandlerBase(World)
+	 * @see #BaseLightHandler(World)
 	 */
 	public BaseLightHandler(World world) {
 		this.world = world;

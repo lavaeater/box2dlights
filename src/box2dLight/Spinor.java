@@ -1,7 +1,6 @@
 package box2dLight;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.StringBuilder;
 
 public class Spinor {
   float real;

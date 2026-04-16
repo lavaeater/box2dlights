@@ -40,12 +40,12 @@ public abstract class P3dLight extends BaseLight {
 	protected final Vector2 tmpVec = new Vector2();
 	protected final Vector2 center = new Vector2(); 
 	
-	/** 
+	/**
 	 * Creates new active light and automatically adds it to the specified
-	 * {@link RayHandler} instance.
-	 * 
-	 * @param rayHandler
-	 *            not null instance of RayHandler
+	 * {@link P3dLightManager} instance.
+	 *
+	 * @param lightManager
+	 *            not null instance of P3dLightManager
 	 * @param rays
 	 *            number of rays - more rays make light to look more realistic
 	 *            but will decrease performance, can't be less than MIN_RAYS

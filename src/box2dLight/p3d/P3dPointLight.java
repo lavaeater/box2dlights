@@ -32,8 +32,8 @@ public class P3dPointLight extends P3dPositionalLight {
 	 * Creates light shaped as a circle with default radius (15f), color and
 	 * position (0f, 0f)
 	 * 
-	 * @param rayHandler
-	 *            not {@code null} instance of RayHandler
+	 * @param lightManager
+	 *            not {@code null} instance of P3dLightManager
 	 * @param rays
 	 *            number of rays - more rays make light to look more realistic
 	 *            but will decrease performance, can't be less than MIN_RAYS
@@ -45,8 +45,8 @@ public class P3dPointLight extends P3dPositionalLight {
 	/**
 	 * Creates light shaped as a circle with given radius
 	 * 
-	 * @param rayHandler
-	 *            not {@code null} instance of RayHandler
+	 * @param lightManager
+	 *            not {@code null} instance of P3dLightManager
 	 * @param rays
 	 *            number of rays - more rays make light to look more realistic
 	 *            but will decrease performance, can't be less than MIN_RAYS

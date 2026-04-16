@@ -34,7 +34,8 @@ public class P3dLightManager extends BaseLightHandler {
 	 * 
 	 * <p>NOTE: FBO size is 1/4 * screen size and used by default.
 	 * 
-	 * <ul>Default setting are:
+	 * <p>Default settings are:
+	 * <ul>
 	 *     <li>culling = true
 	 *     <li>shadows = true
 	 *     <li>diffuse = false
@@ -42,8 +43,8 @@ public class P3dLightManager extends BaseLightHandler {
 	 *     <li>blurNum = 1
 	 *     <li>ambientLight = 0f
 	 * </ul>
-	 * 
-	 * @see #RayHandler(World, int, int)
+	 *
+	 * @see #P3dLightManager(World, int, int)
 	 */
 	public P3dLightManager(World world) {
 		this(world, Gdx.graphics.getWidth() / 4, Gdx.graphics
@@ -54,7 +55,7 @@ public class P3dLightManager extends BaseLightHandler {
 	 * Class constructor specifying the physics world from where collision
 	 * geometry is taken, and size of FBO used for intermediate rendering.
 	 * 
-	 * @see #RayHandler(World)
+	 * @see #P3dLightManager(World)
 	 */
 	public P3dLightManager(World world, int fboWidth, int fboHeigth) {
 		super(world);

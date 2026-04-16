@@ -46,8 +46,8 @@ public class P3dDirectionalLight extends P3dLight {
 	 * 
 	 * <p>-90 direction is straight from up
 	 * 
-	 * @param rayHandler
-	 *            not {@code null} instance of RayHandler
+	 * @param lightManager
+	 *            not {@code null} instance of P3dLightManager
 	 * @param rays
 	 *            number of rays - more rays make light to look more realistic
 	 *            but will decrease performance, can't be less than MIN_RAYS
