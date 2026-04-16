@@ -248,6 +248,7 @@ public abstract class P3dPositionalLight extends P3dLight {
 	
 	@Override
 	protected boolean onDynamicCallback(Fixture fixture) {
+		if (!super.onDynamicCallback(fixture)) return false;
 		return fixture.getBody() != body;
 	}
 	
