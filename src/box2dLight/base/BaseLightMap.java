@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import de.damios.guacamole.gdx.graphics.NestableFrameBuffer;
 import com.badlogic.gdx.utils.Disposable;
 
 /**
@@ -24,11 +25,11 @@ implements Disposable {
 
 	protected BaseLightHandler lightHandler;
 	protected Mesh lightMapMesh;
-	protected FrameBuffer pingPongBuffer;
+	protected NestableFrameBuffer pingPongBuffer;
 	protected ShaderProgram blurShader;
 	protected boolean lightMapDrawingDisabled;
 
-	public FrameBuffer frameBuffer;
+	public NestableFrameBuffer frameBuffer;
 
 	public abstract void render();
 
@@ -38,9 +39,9 @@ implements Disposable {
 		if (fboWidth <= 0) fboWidth = 1;
 		if (fboHeight <= 0) fboHeight = 1;
 		
-		frameBuffer = new FrameBuffer(Format.RGBA8888, fboWidth,
+		frameBuffer = new NestableFrameBuffer(Format.RGBA8888, fboWidth,
 				fboHeight, false);
-		pingPongBuffer = new FrameBuffer(Format.RGBA8888, fboWidth,
+		pingPongBuffer = new NestableFrameBuffer(Format.RGBA8888, fboWidth,
 				fboHeight, false);
 
 		lightMapMesh = createLightMapMesh();

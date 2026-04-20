@@ -58,6 +58,7 @@ java {
 repositories {
 	mavenLocal()
 	mavenCentral()
+	maven { url "https://jitpack.io" }
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -86,6 +87,7 @@ run {
 
 dependencies {
 	implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+	implementation "com.github.crykn.guacamole:gdx:0.3.2"
 	implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 	testImplementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
 	testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
