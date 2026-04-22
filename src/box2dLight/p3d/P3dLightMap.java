@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import de.damios.guacamole.gdx.graphics.NestableFrameBuffer;
 
 /**
  * Light map for pseudo-3d rendering
@@ -19,7 +20,7 @@ class P3dLightMap extends BaseLightMap {
 	
 	P3dLightManager lightManager;
 
-	FrameBuffer shadowBuffer;
+	NestableFrameBuffer shadowBuffer;
 	ShaderProgram shadowShader;
 
 	public void render() {
@@ -55,7 +56,7 @@ class P3dLightMap extends BaseLightMap {
 		lightManager = manager;
 		
 		shadowShader = DynamicShadowShader.createShadowShader(P3dLightManager.colorReduction);
-		shadowBuffer = new FrameBuffer(Format.RGBA8888, fboWidth,
+		shadowBuffer = new NestableFrameBuffer(Format.RGBA8888, fboWidth,
 				fboHeight, false);
 	}
 

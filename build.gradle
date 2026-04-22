@@ -1,5 +1,6 @@
 plugins {
 	id 'java-library'
+	id 'application'
 }
 
 sourceSets {
@@ -19,7 +20,7 @@ sourceSets {
 }
 
 ext {
-	gdxVersion = "1.14.0"
+	gdxVersion = "1.13.1"
 
 	isReleaseBuild = {
 		return project.hasProperty("RELEASE")
@@ -57,6 +58,7 @@ java {
 repositories {
 	mavenLocal()
 	mavenCentral()
+	maven { url "https://jitpack.io" }
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -67,8 +69,25 @@ tasks.withType(Test).configureEach {
 	systemProperty 'file.encoding', 'UTF-8'
 }
 
+def os = System.properties['os.name'].toString().toLowerCase()
+
+application {
+	mainClass = 'tests.DesktopLauncher'
+}
+
+run {
+	classpath = sourceSets.test.runtimeClasspath
+	workingDir = project.projectDir
+	setIgnoreExitValue(true)
+
+	if (os.contains('mac')) {
+		jvmArgs += "-XstartOnFirstThread"
+	}
+}
+
 dependencies {
 	implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+	implementation "com.github.crykn.guacamole:gdx:0.3.2"
 	implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 	testImplementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
 	testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"

@@ -51,6 +51,13 @@ public abstract class BaseLight implements Disposable {
 	
 	public abstract boolean contains(float x, float y);
 
+	public boolean getIsActive() {
+		return active;
+	}
+
+	public void setIsActive(boolean active) {
+		this.active = active;
+	}
 
 	/**
 	 * Sets light distance

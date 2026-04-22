@@ -6,6 +6,7 @@ import box2dLight.base.BaseLight;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Filter;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.QueryCallback;
 import com.badlogic.gdx.utils.Array;
@@ -104,6 +105,10 @@ public abstract class P3dLight extends BaseLight {
 		return active;
 	}
 
+	public boolean getActive() {
+		return active;
+	}
+
 	/**
 	 * Enables/disables x-ray beams for this light
 	 * 
@@ -170,7 +175,76 @@ public abstract class P3dLight extends BaseLight {
 		this.height = height;
 	}
 
+	public float getHeight() {
+		return this.height;
+	}
+
+	/** Global contact filter applied to all P3d lights **/
+	static private Filter globalFilterA = null;
+	/** Per-light contact filter **/
+	private Filter filterA = null;
+
+	/**
+	 * Sets given contact filter for this light
+	 */
+	public void setContactFilter(Filter filter) {
+		filterA = filter;
+	}
+
+	/**
+	 * Creates a new contact filter for this light with given parameters
+	 *
+	 * @param categoryBits - see {@link Filter#categoryBits}
+	 * @param groupIndex   - see {@link Filter#groupIndex}
+	 * @param maskBits     - see {@link Filter#maskBits}
+	 */
+	public void setContactFilter(short categoryBits, short groupIndex, short maskBits) {
+		filterA = new Filter();
+		filterA.categoryBits = categoryBits;
+		filterA.groupIndex = groupIndex;
+		filterA.maskBits = maskBits;
+	}
+
+	/**
+	 * Sets given contact filter for ALL P3d lights
+	 */
+	static public void setGlobalContactFilter(Filter filter) {
+		globalFilterA = filter;
+	}
+
+	/**
+	 * Creates a new contact filter for ALL P3d lights with given parameters
+	 *
+	 * @param categoryBits - see {@link Filter#categoryBits}
+	 * @param groupIndex   - see {@link Filter#groupIndex}
+	 * @param maskBits     - see {@link Filter#maskBits}
+	 */
+	static public void setGlobalContactFilter(short categoryBits, short groupIndex, short maskBits) {
+		globalFilterA = new Filter();
+		globalFilterA.categoryBits = categoryBits;
+		globalFilterA.groupIndex = groupIndex;
+		globalFilterA.maskBits = maskBits;
+	}
+
+	boolean contactFilter(Fixture fixtureB) {
+		Filter filterB = fixtureB.getFilterData();
+		if (filterA.groupIndex != 0 && filterA.groupIndex == filterB.groupIndex)
+			return filterA.groupIndex > 0;
+		return (filterA.maskBits & filterB.categoryBits) != 0 &&
+				(filterA.categoryBits & filterB.maskBits) != 0;
+	}
+
+	boolean globalContactFilter(Fixture fixtureB) {
+		Filter filterB = fixtureB.getFilterData();
+		if (globalFilterA.groupIndex != 0 && globalFilterA.groupIndex == filterB.groupIndex)
+			return globalFilterA.groupIndex > 0;
+		return (globalFilterA.maskBits & filterB.categoryBits) != 0 &&
+				(globalFilterA.categoryBits & filterB.maskBits) != 0;
+	}
+
 	protected boolean onDynamicCallback(Fixture fixture) {
+		if (globalFilterA != null && !globalContactFilter(fixture)) return false;
+		if (filterA != null && !contactFilter(fixture)) return false;
 		return true;
 	}
 	

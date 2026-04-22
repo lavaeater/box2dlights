@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import de.damios.guacamole.gdx.graphics.NestableFrameBuffer;
 
 class LightMap extends BaseLightMap {
 
@@ -18,7 +19,7 @@ class LightMap extends BaseLightMap {
 	ShaderProgram shadowShader;
 	ShaderProgram diffuseShader;
 
-	FrameBuffer shadowBuffer;
+	NestableFrameBuffer shadowBuffer;
 
 	boolean lightMapDrawingDisabled;
 
@@ -33,7 +34,7 @@ class LightMap extends BaseLightMap {
 		this.fboWidth = fboWidth;
 		this.fboHeight = fboHeight;
 
-		shadowBuffer = new FrameBuffer(Format.RGBA8888, fboWidth,
+		shadowBuffer = new NestableFrameBuffer(Format.RGBA8888, fboWidth,
 				fboHeight, false);
 
 		createShaders();

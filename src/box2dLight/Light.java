@@ -335,6 +335,10 @@ public abstract class Light extends BaseLight {
 		this.pseudo3dHeight = height;
 	}
 
+	public float getHeight() {
+		return this.pseudo3dHeight;
+	}
+
 	/**
 	 * Internal method for mesh update depending on ray number
 	 */

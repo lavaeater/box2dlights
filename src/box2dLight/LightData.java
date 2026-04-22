@@ -36,7 +36,7 @@ public class LightData {
 				l = diff;
 			}
 		} else if (lightHeight == 0f) {
-			l = lightRange;
+			l = lightRange - distance;
 		} else {
 			l = lightRange - distance;
 		}

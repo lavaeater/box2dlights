@@ -11,10 +11,21 @@ public class RayHandlerOptions {
 		isDiffuse = diffuse;
 	}
 
+	public boolean getDiffuse() {
+		return isDiffuse;
+	}
+
 	public void setGammaCorrection (boolean gammaCorrection) {
 		this.gammaCorrection = gammaCorrection;
 	}
 
+	public boolean getGammaCorrection() {
+		return this.gammaCorrection;
+	}
+
+	public boolean getPseudo3d() {
+		return this.pseudo3d;
+	}
 	public void setPseudo3d (boolean pseudo3d) {
 		setPseudo3d(pseudo3d, false);
 	}
